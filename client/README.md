@@ -40,3 +40,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 3- bun i
 4-Hero Ui installation :-bun add @heroui/react framer-motion
 5-lucide installation :-pnpm install lucide-react
+6-bun i socket.io-client
+7-bun i socket.io-server
