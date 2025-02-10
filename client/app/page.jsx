@@ -4,7 +4,7 @@ import { HeroUIProvider } from "@heroui/react";
 import { Messages, Inputs, SignUp } from "@/components";
 import { io } from "socket.io-client";
 
-const socket = io("");
+const socket = io("https://chat-app-mvgq3.kinsta.app/");
 
 export default function Home() {
   const [user, setUser] = useState(null);

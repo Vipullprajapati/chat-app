@@ -47,13 +47,13 @@ export default function SignUp({ setUser, socket }) {
             width={40}
           />
           <div className="flex flex-col">
-            <p className="text-md">Chatting Room</p>
+            <p className="text-md">Chat Room</p>
             <a
-              href="https://abhishek.phleebs.tech/"
+              href="https://vipul.phleebs.tech/"
               className="cursor-pointer text-default-500"
             >
               <p className="text-small text-default-500">
-                Abhishek.Phleebs.tech
+              vipul.Phleebs.tech
               </p>
             </a>
           </div>
@@ -85,7 +85,7 @@ export default function SignUp({ setUser, socket }) {
           <Link
             isExternal
             showAnchorIcon
-            href="https://github.com/PatellAbhishekk/Chating-App"
+            href="https://github.com/vipullprajapati/chat-app"
           >
             Visit source code on GitHub.
           </Link>
