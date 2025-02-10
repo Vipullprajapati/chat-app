@@ -1,31 +1,35 @@
 "use client";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
 import { HeroUIProvider } from "@heroui/react";
 import { Messages, Inputs, SignUp } from "@/components";
+import { io } from "socket.io-client";
 
-const socket = io(
-  "https://congenial-zebra-69r46pjwvr6vf6pw-8000.app.github.dev/"
-);
-
-console.log(socket);
+const socket = io("https://chating-app-h2oq1.kinsta.app/");
 
 export default function Home() {
   const [user, setUser] = useState(null);
-  const [imgSrc, setImgSrc] = useState("https://placehold.co/400");
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const session = sessionStorage.getItem("user");
-    if (session) {
-      setUser(session);
-    }
+    socket.on("new_message", (msg) => {
+      setMessages((prevState) => [...prevState, msg]);
+    });
   }, []);
 
   useEffect(() => {
-    socket.on("image", (data) => {
-      setImgSrc(data);
+    socket.on("new_user", (name) => {
+      const msg = {
+        type: "user",
+        content: name,
+        user: {
+          id: 0,
+          name: "",
+        },
+      };
+
+      setMessages((prevState) => [...prevState, msg]);
     });
-  }, [imgSrc, setImgSrc]);
+  }, []);
 
   return (
     <HeroUIProvider>
@@ -34,10 +38,8 @@ export default function Home() {
           <SignUp setUser={setUser} socket={socket} />
         ) : (
           <div className="relative min-h-screen max-h-screen">
-            <Messages />
-            <Inputs />
-            <img src={imgSrc} />
-            <Inputs socket={socket} />
+            <Messages messages={messages} id={socket.id} />
+            <Inputs socket={socket} name={user} setMessages={setMessages} />
           </div>
         )}
       </div>

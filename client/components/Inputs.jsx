@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Button, Input } from "@heroui/react";
 import { ImageUpIcon, SendHorizonalIcon } from "lucide-react";
 
-export default function Inputs({ socket }) {
+export default function Inputs({ socket, name, setMessages }) {
   const [input, setInput] = useState("");
   const imageEl = useRef(null);
 
@@ -14,8 +14,18 @@ export default function Inputs({ socket }) {
 
     reader.onloadend = function () {
       const base64String = reader.result;
-      socket.emit("image", base64String);
-      console.log(base64String);
+
+      const msg = {
+        type: "image",
+        content: base64String,
+        user: {
+          id: socket.id,
+          name: name,
+        },
+      };
+
+      socket.emit("message", msg);
+      setMessages((prevState) => [...prevState, msg]);
     };
 
     if (file) {
@@ -28,9 +38,20 @@ export default function Inputs({ socket }) {
 
     if (!input) {
       imageEl.current.click();
+      return;
     }
 
-    console.log(input);
+    const msg = {
+      type: input.startsWith("https") ? "link" : "text",
+      content: input,
+      user: {
+        id: socket.id,
+        name: name,
+      },
+    };
+
+    socket.emit("message", msg);
+    setMessages((prevState) => [...prevState, msg]);
 
     setInput("");
   };
