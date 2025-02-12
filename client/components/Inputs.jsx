@@ -50,15 +50,16 @@ export default function Inputs({ socket, name, setMessages }) {
       },
     };
 
-    socket.emit("message", msg); // This line sends the message to the server via your socket connection. 
+    socket.emit("message", msg); // This line sends the message to the server via your socket connection.
     setMessages((prevState) => [...prevState, msg]); // This line immediately updates the local state of the component, adding the message to the chat display.
 
     setInput("");
   };
 
   return (
+    // message input bar at the bottom of the screen
     <form
-      className="absolute bottom-0 w-full flex gap-0 sm:gap-1 mb-0 sm:mb-2 px-0 sm:px-8 max-w-6xl left-1/2 -translate-x-1/2"
+      className="absolute bottom-3 w-full flex gap-1 sm:gap-1 mb-1 sm:mb-2 px-0 sm:px-8 max-w-6xl left-1/2 -translate-x-1/2"
       onSubmit={onSubmit}
     >
       <Input
