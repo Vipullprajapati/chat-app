@@ -50,8 +50,8 @@ export default function Inputs({ socket, name, setMessages }) {
       },
     };
 
-    socket.emit("message", msg);
-    setMessages((prevState) => [...prevState, msg]);
+    socket.emit("message", msg); // This line sends the message to the server via your socket connection. 
+    setMessages((prevState) => [...prevState, msg]); // This line immediately updates the local state of the component, adding the message to the chat display.
 
     setInput("");
   };

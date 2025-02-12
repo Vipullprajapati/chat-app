@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -9,88 +10,81 @@ import {
   Button,
   Form,
   Input,
+  Spinner,
 } from "@heroui/react";
-import { ChevronRightIcon } from "lucide-react";
-import { useEffect } from "react";
 
-export default function SignUp({ setUser, socket }) {
+function SignUp({ setUser, socket }) {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const session = sessionStorage.getItem("user");
+    setIsLoading(false);
+
     if (session) {
       setUser(session);
     }
   }, []);
 
   const onSubmit = (e) => {
-    // Prevent default browser page refresh.
     e.preventDefault();
 
     // Get form data as an object.
     const data = Object.fromEntries(new FormData(e.currentTarget));
 
-    // Submit data to your backend API.
+    sessionStorage.setItem("user", data.name);
     socket.emit("user", data.name);
     setUser(data.name);
-
-    sessionStorage.setItem("user", data.name);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center ">
-      <Card className="max-w-[300px]">
-        <CardHeader className="flex gap-3">
-          <Image
-            alt="MADE room logo"
-            height={40}
-            radius="sm"
-            src="favicon.ico"
-            width={40}
-          />
-          <div className="flex flex-col">
-            <p className="text-md">Chat Room</p>
-            <a
-              href="https://vipul.phleebs.tech/"
-              className="cursor-pointer text-default-500"
-            >
-              <p className="text-small text-default-500">
-              vipul.Phleebs.tech
-              </p>
-            </a>
-          </div>
-        </CardHeader>
-
-        <Divider />
-
-        <CardBody>
-          <Form onSubmit={onSubmit} validationBehavior="native">
-            <Input
-              isRequired
-              errorMessage="Please enter a name"
-              label="Name"
-              labelPlacement="outside"
-              name="name"
-              placeholder="Enter your name"
-              type="text"
-              autoComplete="off"
+    <div className="min-h-screen max-h-screen flex justify-center items-center">
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Card className="max-w-[300px]">
+          <CardHeader className="flex gap-3">
+            <Image
+              alt="heroui logo"
+              height={40}
+              radius="sm"
+              src="favicon.ico"
+              width={40}
             />
-            <Button type="submit" className="gap-0">
-              Join <ChevronRightIcon />
-            </Button>
-          </Form>
-        </CardBody>
-
-        <Divider />
-
-        <CardFooter>
-          <Link
-            isExternal
-            showAnchorIcon
-            href="https://github.com/vipullprajapati/chat-app"
-          >
-            Visit source code on GitHub.
-          </Link>
-        </CardFooter>
-      </Card>
+            <div className="flex flex-col">
+              <p className="text-md">MADE Room</p>
+              <p className="text-small text-default-500">made.phleebs.tech</p>
+            </div>
+          </CardHeader>
+          <Divider />
+          <CardBody>
+            <Form onSubmit={onSubmit} validationBehavior="native">
+              <Input
+                isRequired
+                errorMessage="Please enter a valid name"
+                label="Name"
+                labelPlacement="inside"
+                name="name"
+                placeholder="Enter your name"
+                type="text"
+                autoComplete="off"
+              />
+              <Button type="submit">Submit</Button>
+            </Form>
+          </CardBody>
+          <Divider />
+          <CardFooter>
+            <Link
+              isExternal
+              showAnchorIcon
+              href="https://chat-app-ruddy-iota.vercel.app/"
+            >
+              Visit source code on GitHub.
+            </Link>
+          </CardFooter>
+        </Card>
+      )}
     </div>
   );
 }
+
+export default SignUp;
