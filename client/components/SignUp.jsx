@@ -51,8 +51,8 @@ function SignUp({ setUser, socket }) {
               width={40}
             />
             <div className="flex flex-col">
-              <p className="text-md">MADE Room</p>
-              <p className="text-small text-default-500">made.phleebs.tech</p>
+              <p className="text-md">Chat Room</p>
+              <p className="text-small text-default-500">vipul.phleebs.tech</p>
             </div>
           </CardHeader>
           <Divider />
@@ -68,7 +68,7 @@ function SignUp({ setUser, socket }) {
                 type="text"
                 autoComplete="off"
               />
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Join</Button>
             </Form>
           </CardBody>
           <Divider />
@@ -76,7 +76,7 @@ function SignUp({ setUser, socket }) {
             <Link
               isExternal
               showAnchorIcon
-              href="https://chat-app-ruddy-iota.vercel.app/"
+              href="https://github.com/Vipullprajapati/chat-app"
             >
               Visit source code on GitHub.
             </Link>
