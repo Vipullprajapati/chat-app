@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Chat from "./Chat";
 
+
 export default function Messages({ messages, id }) {
   const scrollRef = useRef(null);
 
@@ -11,7 +12,19 @@ export default function Messages({ messages, id }) {
   }, [messages]);
 
   return (
-    <div className="container mx-auto pt-5 min-h-[90vh] max-h-[90vh] overflow-scroll scrollbar-hidden px-5 py-3">
+    <>
+    {/* {  // navbar} */}
+    <div className="bg-green-400 text-white  w-full">
+      <div className="container mx-auto flex flex-row justify-between items-center sm:px-5 py-2 px-2">
+      <h1>VipuL tech</h1>
+      <ul className="flex flex-row gap-2">
+        <h4>Network :</h4>
+        <li>online</li>
+      </ul>
+      </div>
+    </div>
+    
+    <div className="container mx-auto pt-5 min-h-[85vh] max-h-[85vh] overflow-scroll scrollbar-hidden px-5 py-3">
       <section className="flex gap-1 flex-col">
         {messages.map((message, index) => (
           <Chat
@@ -26,5 +39,6 @@ export default function Messages({ messages, id }) {
 
       <div className="auto-scroll" ref={scrollRef}></div>
     </div>
+    </>
   );
 }
