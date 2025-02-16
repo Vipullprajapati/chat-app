@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Chat from "./Chat";
+import { Camera } from "lucide-react";
 
 // network status
 function useOnlineStatus() {
@@ -44,6 +45,7 @@ export default function Messages({ messages, id,teamName = "Vipul tech" }) {
       <h1>😀{teamName}</h1>
       <ul className="flex flex-row gap-2">
          <h4>Network: {useOnlineStatus ? "online" : "offline"}</h4> {/* Display the value */}
+         <Camera className="w-7 h-5 cursor-pointer hover:scale-110 " />
       </ul>
       </div>
     </div>
