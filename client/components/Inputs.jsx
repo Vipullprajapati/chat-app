@@ -59,7 +59,7 @@ export default function Inputs({ socket, name, setMessages }) {
   return (
     // message input bar at the bottom of the screen
     <form
-      className="absolute bottom-3 w-full flex gap-1 sm:gap-1 mb-1 sm:mb-2 px-0 sm:px-8 max-w-6xl left-1/2 -translate-x-1/2"
+      className="absolute bottom-3 w-full flex gap-1 sm:gap-1 mb-1 sm:mb-2 px-2 sm:px-8 max-w-6xl left-1/2 -translate-x-1/2"
       onSubmit={onSubmit}
     >
       <Input
