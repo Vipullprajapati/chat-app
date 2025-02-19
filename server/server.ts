@@ -48,8 +48,8 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("message", (data) => {
-    socket.broadcast.emit("new_message", data);
+  socket.on("typing", (data) => {
+    socket.broadcast.emit("user_typing", data);
   });
 
   socket.on("user", (data) => {
