@@ -61,7 +61,7 @@ export default function Messages({ messages, id }) {
       </div>
 
       {/* scrolling */}
-      <div className="container mx-auto pt-5 min-h-[85vh] max-h-[85vh] overflow-scroll scrollbar-hidden px-5 py-3">
+      <div className="container mx-auto pt-5 min-h-[83vh] max-h-[83vh] overflow-scroll scrollbar-hidden px-5 py-3">
         <section className="flex gap-1 flex-col">
           {messages.map((message, index) => (
             <Chat
