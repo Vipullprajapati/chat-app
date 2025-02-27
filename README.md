@@ -1,21 +1,58 @@
-# server
+### Client ###
+``` This is the client-side application built with Next.js.```
 
-To install dependencies:
+*** Getting Started ***
 
-```bash
-bun install
+Clone the repository:
+```Bash
+git clone <repository_url>
+```
+```
+cd client
 ```
 
-To run:
+Install dependencies:
 
-```bash
-bun run index.ts
+```Bash
+1-npm install
 ```
 
-This project was created using `bun init` in bun v1.2.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Run the development server:
 
-1-bun install
-2-bun init
-3-express install (npm install express)
-4-dockerfile(npm i doker)
-5-bun run dev
+```Bash
+npm run dev
+Open your browser and navigate to http://localhost:3000.1
+```
+
+1.
+Build for Production
+
+```Bash
+npm run build
+npm run start
+```
+
+### Dependencies
+Next.js
+
+React
+
+Socket.IO (client)
+
+HeroUI components
+
+Lucide React icons
+
+Framer Motion
+
+### Development Dependencies
+
+TypeScript
+
+ESLint
+
+Tailwind CSS
+
+PostCSS
+
+
