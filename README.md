@@ -56,3 +56,44 @@ Tailwind CSS
 PostCSS
 
 
+### Server
+This is the server-side application.
+
+Getting Started
+
+### 1- Clone the repository:
+
+```Bash
+git clone <repository_url>
+cd server
+```
+
+### 2- Install dependencies:
+```Bash
+
+bun install
+```
+
+### 3- Run the development server:
+```Bash
+
+bun run dev
+```
+
+### 4- Run the server:
+```Bash
+
+bun run start
+```
+
+### Dependencies
+Express.js
+
+Socket.IO
+
+Doker
+
+### Development Dependencies
+Bun types
+
+TypeScript (peer dependency)
